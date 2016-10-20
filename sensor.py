@@ -38,7 +38,7 @@ def main():
     data = {"temperature": temperature}
     data = json.dumps(data)
     (rc, mid) = client.publish(config["publish_topic"], data)
-    print("Published a message" + data)
+    print("Temperature data: " + data)
     time.sleep(5)
 
 if __name__ == '__main__':

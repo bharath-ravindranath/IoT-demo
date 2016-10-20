@@ -41,13 +41,11 @@ def on_message(client, userdata, msg):
 def myCommandCallback(cmd):
   data = json.dumps(cmd.data["status"])
   print(data)
-  if int(data) == 0:
-    senddata = {"ac": "off"}
+  if str(data)[1:-1] == "Temperature safe turn OFF AC":
+    senddata = "0"
   else:
-    senddata = {"ac": "on"}
-  senddata = json.dumps(senddata)
+    senddata = "1"
   (rc, mid) = client.publish(config["publish_topic"], senddata)
-  print("Published a message" + senddata)
 
 def main():
   # check the correct usage of the command

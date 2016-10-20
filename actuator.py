@@ -2,6 +2,7 @@ import paho.mqtt.client as paho
 import random
 import time
 import json
+import sys
 
 # Credentials to connect to gateway MQTT broker
 config= {
@@ -20,11 +21,9 @@ def on_subscribe(client,userdata, mid, granted_qos):
   print("Subscribed: "+str(granted_qos))
 
 def on_message(client, userdata, msg):
-  receivedData=json.loads(msg.payload)
-  if receivedData["ac"] == "on":
-    print("Switching on AC")
-  else:
-    print("No AC ON")
+  print msg.payload
+  # receivedData=json.loads(msg.payload)
+  # print(receivedData["switch"])
    
 def main():
   # check the correct usage of the command

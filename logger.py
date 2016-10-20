@@ -2,6 +2,7 @@ import paho.mqtt.client as paho
 import random
 import time
 import json
+import sys
 
 # Credentials to connect to gateway MQTT broker
 config= {
@@ -20,7 +21,7 @@ def on_subscribe(client,userdata, mid, granted_qos):
 
 def on_message(client, userdata, msg):
   with open('logfile','a+') as file:
-    file.write("Topic: " + msg.topic +"  Data: "+ str(msg.payload)+"\n")
+    file.write("Topic: " + msg.topic +"\t\t\tData: "+ str(msg.payload)+"\n")
 
 def main():
   # check the correct usage of the command
