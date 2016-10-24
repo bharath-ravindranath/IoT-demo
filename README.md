@@ -151,8 +151,8 @@ Use ‘pip install paho-mqtt’ on the edison board to install the necessary pyt
   It also receives the commands sent by the Cloud service (NodeRED app) and sends this message to the actuator. 
   ```
   Message format    : JSON
-  Message           : {d:{"status": 0/1}}      <0/1 indicates to switch on/off AC>
-  Local MQTT message: {"ac": "on/off"}
+  Message           : {d:{"status": "Temperature safe turn OFF AC"/"Temperature criticle turn ON AC"}}     
+  Local MQTT message: "0"/"1"     // Sending to actuator
   Local MQTT topic  : "receivedCommand"
   ```
   Usage:
@@ -164,8 +164,7 @@ Use ‘pip install paho-mqtt’ on the edison board to install the necessary pyt
 
   Runs on the sensor.
   
-  Connects the local MQTT broker running on the Intel Edison gateway. Sends a random number between 40 and 100 every 5 seconds in the JSON format - {"temperature": <number>}
-
+  Connects the local MQTT broker running on the Intel Edison gateway. Sends a random number between 40 and 100 every 5 seconds in the JSON format - {"temperature" : \<number\> }
   ```
   Message format: JSON
   Message       : integer between 40 and 100
@@ -184,7 +183,7 @@ Use ‘pip install paho-mqtt’ on the edison board to install the necessary pyt
 
   Connects to local MQTT broker. Turns on/off the AC according to the command received from the gateway.
   ```
-  Received message    : {"ac": "on/off"}
+  Received message    : "0"/"1"
   MQTT broker topic   : "receivedCommand"
   ```
   Usage:
